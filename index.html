@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Chat</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#eef2f7;
+}
+header{
+  background:#075e54;
+  color:white;
+  padding:20px;
+  text-align:center;
+  font-size:25px;
+  font-weight:bold;
+}
+.container{
+  max-width:600px;
+  margin:20px auto;
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 3px 12px #ccc;
+}
+.room{
+  padding:15px;
+  background:#e8f5f2;
+  font-weight:bold;
+}
+.messages{
+  height:400px;
+  padding:15px;
+  overflow-y:auto;
+}
+.msg{
+  background:#dcf8c6;
+  padding:12px;
+  margin:10px 0;
+  border-radius:10px;
+  width:fit-content;
+  max-width:85%;
+}
+.name{
+  color:#075e54;
+  font-weight:bold;
+  font-size:13px;
+}
+form{
+  display:flex;
+  padding:12px;
+  gap:8px;
+}
+input{
+  flex:1;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:25px;
+  min-width:0;
+}
+button{
+  background:#075e54;
+  color:white;
+  border:0;
+  padding:12px 18px;
+  border-radius:25px;
+}
+</style>
+</head>
+<body>
+<header>💬 My Chat</header>
+<div class="container">
+  <div class="room">🌍 Welcome Group</div>
+  <div class="messages" id="messages">
+    <div class="msg">
+      <div class="name">My Chat</div>
+      Welcome! हमारी Chatting Website में आपका स्वागत है।
+    </div>
+  </div>
+  <form id="chatForm">
+    <input id="message" placeholder="अपना मैसेज लिखें..." required>
+    <button type="submit">Send</button>
+  </form>
+</div>
+<script>
+document.getElementById("chatForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  const input=document.getElementById("message");
+  const msg=input.value.trim();
+  if(!msg)return;
+  const div=document.createElement("div");
+  div.className="msg";
+  div.textContent=msg;
+  document.getElementById("messages").appendChild(div);
+  input.value="";
+});
+</script>
+</body>
+</html>
